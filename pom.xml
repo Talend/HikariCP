@@ -298,6 +298,7 @@
                </execution>
             </executions>
             <configuration>
+               <sourceRoot>${project.build.directory}/target/classes</sourceRoot>
                <mainClass>com.zaxxer.hikari.util.JavassistProxyFactory</mainClass>
             </configuration>
          </plugin>
