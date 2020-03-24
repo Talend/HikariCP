@@ -71,6 +71,7 @@ public final class JavassistProxyFactory
    private static void modifyProxyFactory() throws NotFoundException, CannotCompileException, IOException {
       System.out.println("Generating method bodies for com.zaxxer.hikari.proxy.ProxyFactory");
 
+      try {
       String packageName = ProxyConnection.class.getPackage().getName();
       CtClass proxyCt = classPool.getCtClass("com.zaxxer.hikari.pool.ProxyFactory");
       for (CtMethod method : proxyCt.getMethods()) {
@@ -98,8 +99,10 @@ public final class JavassistProxyFactory
                break;
          }
       }
-
       proxyCt.writeFile(genDirectory + "target/classes");
+      } catch(Exception e) {
+    	  e.printStackTrace();
+      }
    }
 
    /**
@@ -107,6 +110,8 @@ public final class JavassistProxyFactory
     */
    private static <T> void generateProxyClass(Class<T> primaryInterface, String superClassName, String methodBody) throws Exception
    {
+
+	      try {
       String newClassName = superClassName.replaceAll("(.+)\\.(\\w+)", "$1.Hikari$2");
 
       CtClass superCt = classPool.getCtClass(superClassName);
@@ -179,6 +184,9 @@ public final class JavassistProxyFactory
 
       targetCt.getClassFile().setMajorVersion(ClassFile.JAVA_8);
       targetCt.writeFile(genDirectory + "target/classes");
+      } catch(Exception e) {
+    	  e.printStackTrace();
+      }
    }
 
    private static boolean isThrowsSqlException(CtMethod method)
