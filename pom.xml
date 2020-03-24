@@ -64,7 +64,7 @@
 
    <groupId>com.zaxxer</groupId>
    <artifactId>HikariCP</artifactId>
-   <version>3.4.2-talend20200324</version>
+   <version>3.4.2-talend20200325</version>
    <packaging>bundle</packaging>
 
    <name>HikariCP</name>
