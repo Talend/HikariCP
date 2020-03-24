@@ -50,6 +50,7 @@ public final class JavassistProxyFactory
 
       if (args.length > 0) {
          genDirectory = args[0];
+         System.out.println(genDirectory);
       }
 
       // Cast is not needed for these
